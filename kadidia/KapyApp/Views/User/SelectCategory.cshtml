@@ -1,0 +1,43 @@
+﻿
+@model IEnumerable<KapyApp.Models.Category>
+<br />
+<br />
+<br />
+
+
+
+    <h4>Please select your favorite categories</h4>
+    <br />
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+
+
+    foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.HiddenFor(model => item.categoryId)
+            </td>
+            <td>
+                @Html.CheckBoxFor(model => item.isSelected)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.categoryName)
+                <br />
+            </td>
+        </tr>
+
+
+    }
+
+
+    <div class="form-group">
+        <br />
+        <input type="submit" value="Register" class="btn btn-default" />
+    </div>
+
+}
+
+
